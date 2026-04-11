@@ -8,34 +8,22 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f5; color: #111; min-height: 100vh; }
   .app { max-width: 680px; margin: 0 auto; padding: 1.25rem 1rem 4rem; }
-
-  /* Nav */
   .top-nav { display: flex; gap: 8px; margin-bottom: 1.5rem; border-bottom: 1px solid #e0e0e0; padding-bottom: 1rem; }
-  .top-nav button { padding: 6px 14px; border-radius: 8px; border: 1px solid #ddd; background: transparent; cursor: pointer; font-size: 14px; color: #888; }
+  .top-nav button { padding: 6px 14px; border-radius: 8px; border: 1px solid #ddd; background: transparent; cursor: pointer; font-size: 14px; color: #888; font-family: inherit; }
   .top-nav button.active { background: #ebebeb; color: #111; font-weight: 500; border-color: #ddd; }
-
-  /* Sections */
   .section { display: none; }
   .section.active { display: block; }
-
-  /* Cards */
   .card { background: #fff; border: 1px solid #e8e8e8; border-radius: 14px; padding: 1rem 1.25rem; margin-bottom: 1rem; }
   .card-title { font-size: 11px; color: #999; margin-bottom: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
-
-  /* Metrics */
   .metric-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
   .metric { background: #f5f5f5; border-radius: 8px; padding: 10px 12px; }
   .metric-label { font-size: 11px; color: #999; margin-bottom: 4px; }
   .metric-value { font-size: 19px; font-weight: 600; color: #111; }
   .metric-sub { font-size: 11px; color: #bbb; margin-top: 2px; }
-
-  /* Segment control */
   .seg-outer { display: inline-flex; background: #f5f5f5; border-radius: 10px; padding: 3px; width: 100%; }
-  .seg-opt { flex: 1; padding: 8px 12px; border: none !important; outline: none !important; border-radius: 8px; background: transparent; font-size: 14px; font-weight: 400; color: #999; cursor: pointer; -webkit-appearance: none; appearance: none; box-shadow: none !important; transition: none; }
+  .seg-opt { flex: 1; padding: 8px 12px; border: none !important; outline: none !important; border-radius: 8px; background: transparent; font-size: 14px; font-weight: 400; color: #999; cursor: pointer; -webkit-appearance: none; appearance: none; box-shadow: none !important; font-family: inherit; }
   .seg-outer-sm { display: inline-flex; background: #f5f5f5; border-radius: 10px; padding: 3px; }
-  .seg-opt-sm { padding: 7px 18px; border: none !important; outline: none !important; border-radius: 8px; background: transparent; font-size: 14px; font-weight: 400; color: #999; cursor: pointer; -webkit-appearance: none; appearance: none; box-shadow: none !important; }
-
-  /* Forms */
+  .seg-opt-sm { padding: 7px 18px; border: none !important; outline: none !important; border-radius: 8px; background: transparent; font-size: 14px; font-weight: 400; color: #999; cursor: pointer; -webkit-appearance: none; appearance: none; box-shadow: none !important; font-family: inherit; }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
   .form-group { display: flex; flex-direction: column; gap: 4px; }
   .form-group label { font-size: 12px; color: #888; }
@@ -43,20 +31,15 @@
   .form-group input:focus { outline: none; border-color: #aaa; }
   .macro-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-bottom: 10px; }
   .target-hint { font-size: 11px; color: #bbb; margin-top: 2px; }
-
-  /* Calories display */
   .cals-display { padding: 9px 11px; border-radius: 8px; background: #f5f5f5; border: none; font-size: 15px; font-weight: 600; color: #888; width: 100%; display: flex; align-items: center; gap: 5px; }
   .cals-display .cals-sub { font-size: 11px; color: #bbb; font-weight: 400; }
-
-  /* Buttons */
   .save-btn { width: 100%; padding: 12px; background: #111; color: #fff; border: none; border-radius: 10px; font-size: 15px; font-weight: 500; cursor: pointer; margin-top: 6px; font-family: inherit; }
   .save-btn:hover { background: #333; }
+  .save-btn:disabled { background: #ccc; cursor: not-allowed; }
   .ai-btn { width: 100%; padding: 13px; border: 1px solid #e0e0e0; border-radius: 14px; background: #f5f5f5; cursor: pointer; font-size: 15px; color: #111; font-weight: 500; margin-bottom: 1rem; font-family: inherit; }
   .ai-btn:hover { background: #ebebeb; }
   .confirm-btn { width: 100%; padding: 12px; background: #1a7a4a; color: #fff; border: none; border-radius: 10px; font-size: 15px; font-weight: 500; cursor: pointer; font-family: inherit; }
   .confirm-btn:hover { background: #155e39; }
-
-  /* Week grid */
   .week-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; }
   .day-cell { background: #f5f5f5; border-radius: 8px; padding: 8px 4px; text-align: center; min-height: 72px; }
   .day-cell.today { border: 1.5px solid #378ADD; }
@@ -67,42 +50,32 @@
   .day-dot.red { background: #E24B4A; }
   .day-type-tag { font-size: 9px; color: #bbb; }
   .day-cardio { font-size: 9px; color: #1a7a4a; margin-top: 2px; }
-
-  /* Progress */
   .progress-bar-wrap { background: #f0f0f0; border-radius: 4px; height: 6px; margin-top: 6px; }
   .progress-bar { height: 6px; border-radius: 4px; background: #1a7a4a; }
   .progress-bar.over { background: #E24B4A; }
-
-  /* AI response */
   .ai-response { background: #f5f5f5; border-radius: 14px; border: 1px solid #e8e8e8; padding: 1.25rem; margin-bottom: 1rem; min-height: 80px; }
   .ai-response p { font-size: 14px; color: #666; line-height: 1.6; }
   .ai-label { font-size: 12px; color: #999; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 4px; }
-
-  /* Confirm macros */
   .confirm-macros { display: none; }
   .confirm-macros.visible { display: block; }
   .confirm-group { display: flex; flex-direction: column; gap: 4px; }
   .confirm-group label { font-size: 12px; color: #888; }
   .confirm-group input { padding: 9px 11px; border: 1px solid #e0e0e0; border-radius: 8px; background: #fff; color: #111; font-size: 15px; font-family: inherit; }
-
-  /* Section label */
   .section-label { font-size: 13px; color: #666; margin-bottom: 8px; font-weight: 500; }
-
-  /* Toast */
   .toast { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); background: #111; color: #fff; border-radius: 20px; padding: 10px 22px; font-size: 14px; display: none; z-index: 999; white-space: nowrap; }
-
-  /* Header */
   .header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; }
   .header h1 { font-size: 20px; font-weight: 700; color: #111; letter-spacing: -0.3px; }
   .header-sub { font-size: 13px; color: #999; margin-top: 1px; }
   .goal-badge { text-align: right; }
   .goal-badge .glabel { font-size: 11px; color: #bbb; }
   .goal-badge .gval { font-size: 16px; font-weight: 700; color: #111; }
+  .sync-status { font-size: 11px; color: #bbb; text-align: right; margin-bottom: 8px; }
+  .sync-status.synced { color: #1a7a4a; }
+  .sync-status.error { color: #E24B4A; }
 </style>
 </head>
 <body>
 <div class="app">
-
   <div class="header">
     <div>
       <h1>AI Macro Coach</h1>
@@ -114,24 +87,23 @@
     </div>
   </div>
 
+  <div id="syncStatus" class="sync-status"></div>
+
   <div class="top-nav">
     <button class="active" onclick="showSection('log', this)">Log today</button>
     <button onclick="showSection('week', this)">This week</button>
     <button onclick="showSection('coach', this)">AI coach</button>
   </div>
 
-  <!-- LOG TODAY -->
   <div id="log" class="section active">
     <div class="card">
       <div class="card-title">What type of day is today?</div>
       <div class="seg-outer" id="dayTypeRow"></div>
     </div>
-
     <div class="card">
       <div class="card-title">Today's targets</div>
       <div class="metric-grid" id="targetMetrics"></div>
     </div>
-
     <div class="card">
       <div class="card-title">Log today</div>
       <div class="form-row">
@@ -169,11 +141,10 @@
         </div>
         <span style="font-size:13px; color:#bbb;">~300 cal, medium intensity</span>
       </div>
-      <button class="save-btn" onclick="saveToday()">Save today's log</button>
+      <button class="save-btn" id="saveBtn" onclick="saveToday()">Save today's log</button>
     </div>
   </div>
 
-  <!-- THIS WEEK -->
   <div id="week" class="section">
     <div class="card">
       <div class="card-title">Weekly overview</div>
@@ -198,7 +169,6 @@
     </div>
   </div>
 
-  <!-- AI COACH -->
   <div id="coach" class="section">
     <div class="card">
       <div class="card-title">Progress to goal</div>
@@ -210,7 +180,6 @@
       <div class="progress-bar-wrap"><div class="progress-bar" id="goalProgress" style="width:0%"></div></div>
       <div style="font-size:12px;color:#bbb;margin-top:6px;" id="progressLabel">0 lbs lost · 13.0 lbs to go</div>
     </div>
-
     <div class="card">
       <div class="card-title">Active macro targets</div>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
@@ -219,13 +188,10 @@
         <div><div style="font-size:11px;color:#bbb;margin-bottom:3px;">Rest</div><div style="font-size:13px;font-weight:500;" id="planRest">150P 90C 35F</div></div>
       </div>
     </div>
-
     <button class="ai-btn" id="aiBtn" onclick="runAIReview()">Analyze my week + suggest adjustments →</button>
-
     <div class="ai-response" id="aiResponse">
       <p style="color:#bbb;">Hit the button above at the end of each week. The AI will review your weight trend, macro adherence, and cardio — then suggest next week's targets.</p>
     </div>
-
     <div class="confirm-macros" id="confirmMacros">
       <div class="card">
         <div class="card-title">Review + confirm next week's targets</div>
@@ -256,60 +222,149 @@
       </div>
     </div>
   </div>
-
 </div>
 <div class="toast" id="toast"></div>
 
 <script>
-const DAYS=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+const SUPABASE_URL = 'https://alhtndmvqqlnuavxeqjf.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFsaHRuZG12cXFsbnVhdnhlcWpmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU5MjgwODUsImV4cCI6MjA5MTUwNDA4NX0.Se9QJbzQGmBgExCxpcctxuBJa_WaPP5priWPM3OIX7Q';
 
-function getStorage(k){try{return JSON.parse(localStorage.getItem(k));}catch(e){return null;}}
-function setStorage(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+const DAYS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 
-function getPlan(){
-  return getStorage('macroplan')||{
-    training:{protein:160,carbs:120,fat:40,cals:1480},
-    refeed:{protein:115,carbs:230,fat:40,cals:1730},
-    rest:{protein:150,carbs:90,fat:35,cals:1275},
-    cardioPerWeek:3,startWeight:148.0,goalWeight:135,
-    startDate:new Date().toISOString().split('T')[0]
+async function sbFetch(path, options={}) {
+  const res = await fetch(SUPABASE_URL + '/rest/v1/' + path, {
+    ...options,
+    headers: {
+      'apikey': SUPABASE_KEY,
+      'Authorization': 'Bearer ' + SUPABASE_KEY,
+      'Content-Type': 'application/json',
+      'Prefer': options.prefer || 'return=representation',
+      ...(options.headers||{})
+    }
+  });
+  if (!res.ok) {
+    const err = await res.text();
+    throw new Error(err);
+  }
+  const text = await res.text();
+  return text ? JSON.parse(text) : null;
+}
+
+let cachedPlan = null;
+let cachedLogs = {};
+
+const DEFAULT_PLAN = {
+  training_protein:160, training_carbs:120, training_fat:40, training_cals:1480,
+  refeed_protein:115,   refeed_carbs:230,   refeed_fat:40,   refeed_cals:1730,
+  rest_protein:150,     rest_carbs:90,       rest_fat:35,     rest_cals:1275,
+  cardio_per_week:3, start_weight:148.0, goal_weight:135,
+  start_date: new Date().toISOString().split('T')[0]
+};
+
+async function loadPlan() {
+  try {
+    const rows = await sbFetch('plan?order=created_at.desc&limit=1');
+    cachedPlan = (rows && rows.length) ? rows[0] : null;
+    if (!cachedPlan) await savePlanToDB(DEFAULT_PLAN);
+    return cachedPlan || DEFAULT_PLAN;
+  } catch(e) {
+    return DEFAULT_PLAN;
+  }
+}
+
+async function savePlanToDB(plan) {
+  try {
+    const rows = await sbFetch('plan?order=created_at.desc&limit=1');
+    if (rows && rows.length) {
+      await sbFetch('plan?id=eq.' + rows[0].id, { method: 'PATCH', body: JSON.stringify(plan) });
+    } else {
+      await sbFetch('plan', { method: 'POST', body: JSON.stringify(plan) });
+    }
+    cachedPlan = plan;
+  } catch(e) { console.error('Save plan error', e); }
+}
+
+function getPlan() { return cachedPlan || DEFAULT_PLAN; }
+
+function planToLocal(p) {
+  return {
+    training: { protein: p.training_protein, carbs: p.training_carbs, fat: p.training_fat, cals: p.training_cals },
+    refeed:   { protein: p.refeed_protein,   carbs: p.refeed_carbs,   fat: p.refeed_fat,   cals: p.refeed_cals },
+    rest:     { protein: p.rest_protein,     carbs: p.rest_carbs,     fat: p.rest_fat,     cals: p.rest_cals },
+    cardioPerWeek: p.cardio_per_week,
+    startWeight: p.start_weight,
+    goalWeight: p.goal_weight,
+    startDate: p.start_date
   };
 }
-function getLogs(){return getStorage('macrologs')||{};}
-function saveLogs(l){setStorage('macrologs',l);}
-function todayKey(){return new Date().toISOString().split('T')[0];}
 
-function getWeekKeys(){
-  const keys=[];const now=new Date();const day=now.getDay();
-  const mon=new Date(now);mon.setDate(now.getDate()-((day===0?7:day)-1));
+function getTargets(type) {
+  const p = planToLocal(getPlan());
+  return p[type] || p.training;
+}
+
+async function loadLogs() {
+  try {
+    const rows = await sbFetch('logs?order=date.asc');
+    cachedLogs = {};
+    if (rows) rows.forEach(r => { cachedLogs[r.date] = r; });
+  } catch(e) { console.error('Load logs error', e); }
+}
+
+async function saveLog(entry) {
+  const existing = cachedLogs[entry.date];
+  try {
+    if (existing) {
+      await sbFetch('logs?id=eq.' + existing.id, { method: 'PATCH', body: JSON.stringify(entry) });
+    } else {
+      await sbFetch('logs', { method: 'POST', body: JSON.stringify(entry) });
+    }
+    await loadLogs();
+    setSyncStatus('Saved', 'synced');
+  } catch(e) {
+    setSyncStatus('Save failed', 'error');
+    console.error(e);
+  }
+}
+
+function setSyncStatus(msg, type) {
+  const el = document.getElementById('syncStatus');
+  el.textContent = msg;
+  el.className = 'sync-status ' + (type||'');
+  if (type === 'synced') setTimeout(() => { el.textContent = ''; el.className = 'sync-status'; }, 3000);
+}
+
+function todayKey() { return new Date().toISOString().split('T')[0]; }
+
+function getWeekKeys() {
+  const keys=[]; const now=new Date(); const day=now.getDay();
+  const mon=new Date(now); mon.setDate(now.getDate()-((day===0?7:day)-1));
   for(let i=0;i<7;i++){const d=new Date(mon);d.setDate(mon.getDate()+i);keys.push(d.toISOString().split('T')[0]);}
   return keys;
 }
 
-function defaultDayType(k){return new Date(k+'T12:00:00').getDay()===6?'refeed':'training';}
-let selectedDayType=defaultDayType(todayKey());
-let cardioToday=false;
+function defaultDayType(k) { return new Date(k+'T12:00:00').getDay()===6?'refeed':'training'; }
+let selectedDayType = defaultDayType(todayKey());
+let cardioToday = false;
 
-function getTargets(t){const p=getPlan();return p[t]||p.training;}
-
-function segSelect(groupEl,clickedBtn){
+function segSelect(groupEl, clickedBtn) {
   groupEl.querySelectorAll('button').forEach(function(b){
-    b.style.background='transparent';b.style.color='#999';b.style.fontWeight='400';
-    b.style.border='none';b.style.outline='none';b.style.boxShadow='none';
+    b.style.background='transparent'; b.style.color='#999'; b.style.fontWeight='400';
+    b.style.border='none'; b.style.outline='none'; b.style.boxShadow='none';
   });
-  clickedBtn.style.background='#ffffff';clickedBtn.style.color='#111';clickedBtn.style.fontWeight='500';
+  clickedBtn.style.background='#ffffff'; clickedBtn.style.color='#111'; clickedBtn.style.fontWeight='500';
 }
 
-function showSection(id,btn){
+function showSection(id, btn) {
   document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
   document.querySelectorAll('.top-nav button').forEach(b=>b.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   btn.classList.add('active');
-  if(id==='week')renderWeek();
-  if(id==='coach')renderCoach();
+  if(id==='week') renderWeek();
+  if(id==='coach') renderCoach();
 }
 
-function renderDayType(){
+function renderDayType() {
   const types=[{key:'training',label:'Training'},{key:'refeed',label:'Refeed'},{key:'rest',label:'Rest'}];
   const row=document.getElementById('dayTypeRow');
   row.innerHTML=types.map(t=>{
@@ -319,12 +374,12 @@ function renderDayType(){
   row.querySelectorAll('button').forEach(function(btn){
     btn.addEventListener('click',function(){
       selectedDayType=btn.getAttribute('data-type');
-      segSelect(row,btn);renderTargetMetrics();updateHints();
+      segSelect(row,btn); renderTargetMetrics(); updateHints();
     });
   });
 }
 
-function renderTargetMetrics(){
+function renderTargetMetrics() {
   const t=getTargets(selectedDayType);
   const cals=Math.round(t.protein*4+t.carbs*4+t.fat*9);
   document.getElementById('targetMetrics').innerHTML=[
@@ -335,14 +390,14 @@ function renderTargetMetrics(){
   ].map(m=>`<div class="metric"><div class="metric-label">${m.label}</div><div class="metric-value">${m.value}</div></div>`).join('');
 }
 
-function updateHints(){
+function updateHints() {
   const t=getTargets(selectedDayType);
   document.getElementById('hintProtein').textContent='target: '+t.protein+'g';
   document.getElementById('hintCarbs').textContent='target: '+t.carbs+'g';
   document.getElementById('hintFat').textContent='target: '+t.fat+'g';
 }
 
-function calcCals(){
+function calcCals() {
   const p=parseFloat(document.getElementById('inputProtein').value)||0;
   const c=parseFloat(document.getElementById('inputCarbs').value)||0;
   const f=parseFloat(document.getElementById('inputFat').value)||0;
@@ -351,13 +406,13 @@ function calcCals(){
   else{el.innerHTML='— <span class="cals-sub">auto-calculated</span>';}
 }
 
-function setCardio(val){
+function setCardio(val) {
   cardioToday=val;
   const tog=document.getElementById('cardioToggle');
-  segSelect(tog,document.getElementById(val?'cardioYes':'cardioNo'));
+  segSelect(tog, document.getElementById(val?'cardioYes':'cardioNo'));
 }
 
-function initCardioToggle(){
+function initCardioToggle() {
   document.getElementById('cardioToggle').querySelectorAll('button').forEach(function(btn){
     btn.addEventListener('click',function(){
       cardioToday=btn.id==='cardioYes';
@@ -366,63 +421,73 @@ function initCardioToggle(){
   });
 }
 
-function saveToday(){
+async function saveToday() {
+  const btn = document.getElementById('saveBtn');
+  btn.textContent = 'Saving...'; btn.disabled = true;
   const weight=parseFloat(document.getElementById('inputWeight').value);
   const protein=parseFloat(document.getElementById('inputProtein').value);
   const carbs=parseFloat(document.getElementById('inputCarbs').value);
   const fat=parseFloat(document.getElementById('inputFat').value);
-  const p=isNaN(protein)?0:protein;const c=isNaN(carbs)?0:carbs;const f=isNaN(fat)?0:fat;
-  const logs=getLogs();const key=todayKey();const t=getTargets(selectedDayType);
-  logs[key]={
-    weight:isNaN(weight)?null:weight,
-    protein:isNaN(protein)?null:protein,
-    carbs:isNaN(carbs)?null:carbs,
-    fat:isNaN(fat)?null:fat,
-    cals:(p||c||f)?Math.round(p*4+c*4+f*9):null,
-    dayType:selectedDayType,cardio:cardioToday,
-    targets:{protein:t.protein,carbs:t.carbs,fat:t.fat,cals:Math.round(t.protein*4+t.carbs*4+t.fat*9)}
+  const p=isNaN(protein)?0:protein; const c=isNaN(carbs)?0:carbs; const f=isNaN(fat)?0:fat;
+  const t=getTargets(selectedDayType);
+  const entry = {
+    date: todayKey(),
+    weight: isNaN(weight)?null:weight,
+    protein: isNaN(protein)?null:protein,
+    carbs: isNaN(carbs)?null:carbs,
+    fat: isNaN(fat)?null:fat,
+    cals: (p||c||f)?Math.round(p*4+c*4+f*9):null,
+    day_type: selectedDayType,
+    cardio: cardioToday,
+    target_protein: t.protein,
+    target_carbs: t.carbs,
+    target_fat: t.fat,
+    target_cals: Math.round(t.protein*4+t.carbs*4+t.fat*9)
   };
-  saveLogs(logs);showToast('Saved!');
+  await saveLog(entry);
+  btn.textContent = 'Save today\'s log'; btn.disabled = false;
+  showToast('Saved!');
 }
 
-function renderWeek(){
-  const logs=getLogs();const keys=getWeekKeys();
+function renderWeek() {
+  const keys=getWeekKeys();
   document.getElementById('weekGrid').innerHTML=keys.map(k=>{
-    const log=logs[k];const d=new Date(k+'T12:00:00');const isToday=k===todayKey();
-    const weight=log&&log.weight?log.weight.toFixed(1):'—';
+    const log=cachedLogs[k]; const d=new Date(k+'T12:00:00'); const isToday=k===todayKey();
+    const weight=log&&log.weight?parseFloat(log.weight).toFixed(1):'—';
     let dotClass='';
-    if(log&&log.protein&&log.targets){
-      const ok=Math.abs(log.protein-log.targets.protein)<=log.targets.protein*0.05&&
-               Math.abs(log.carbs-log.targets.carbs)<=log.targets.carbs*0.08&&
-               Math.abs(log.fat-log.targets.fat)<=log.targets.fat*0.08;
+    if(log&&log.protein&&log.target_protein){
+      const ok=Math.abs(log.protein-log.target_protein)<=log.target_protein*0.05&&
+               Math.abs(log.carbs-log.target_carbs)<=log.target_carbs*0.08&&
+               Math.abs(log.fat-log.target_fat)<=log.target_fat*0.08;
       dotClass=ok?'green':'red';
     }
     return `<div class="day-cell${isToday?' today':''}">
       <div class="day-name">${DAYS[d.getDay()]}</div>
       <div class="day-weight">${weight}</div>
       <div class="day-dot ${dotClass}"></div>
-      <div class="day-type-tag">${log?log.dayType.slice(0,3):defaultDayType(k).slice(0,3)}</div>
+      <div class="day-type-tag">${log?log.day_type.slice(0,3):defaultDayType(k).slice(0,3)}</div>
       ${log&&log.cardio?'<div class="day-cardio">cardio</div>':''}
     </div>`;
   }).join('');
-  const wl=keys.map(k=>logs[k]).filter(Boolean);
-  const wts=wl.filter(l=>l.weight).map(l=>l.weight);
+  const wl=keys.map(k=>cachedLogs[k]).filter(Boolean);
+  const wts=wl.filter(l=>l.weight).map(l=>parseFloat(l.weight));
   const avg=wts.length?(wts.reduce((a,b)=>a+b,0)/wts.length).toFixed(1):'—';
   document.getElementById('avgWeight').textContent=avg==='—'?'—':avg+' lbs';
-  document.getElementById('cardioCount').textContent=wl.filter(l=>l.cardio).length+' / '+getPlan().cardioPerWeek;
+  const plan=planToLocal(getPlan());
+  document.getElementById('cardioCount').textContent=wl.filter(l=>l.cardio).length+' / '+plan.cardioPerWeek;
   document.getElementById('daysLogged').textContent=wl.length+' / 7';
-  const macros=['protein','carbs','fat'];
+  const macros=[{key:'protein',tkey:'target_protein'},{key:'carbs',tkey:'target_carbs'},{key:'fat',tkey:'target_fat'}];
   document.getElementById('macroAdherence').innerHTML=wl.length===0
     ?'<p style="font-size:13px;color:#bbb;">No entries this week yet.</p>'
     :macros.map(m=>{
-      const logged=wl.filter(l=>l[m]&&l.targets&&l.targets[m]);
+      const logged=wl.filter(l=>l[m.key]&&l[m.tkey]);
       if(!logged.length)return '';
-      const aL=logged.reduce((a,l)=>a+l[m],0)/logged.length;
-      const aT=logged.reduce((a,l)=>a+l.targets[m],0)/logged.length;
-      const pct=Math.min(Math.round(aL/aT*100),130);const over=pct>105;
+      const aL=logged.reduce((a,l)=>a+parseFloat(l[m.key]),0)/logged.length;
+      const aT=logged.reduce((a,l)=>a+parseFloat(l[m.tkey]),0)/logged.length;
+      const pct=Math.min(Math.round(aL/aT*100),130); const over=pct>105;
       return `<div style="margin-bottom:12px;">
         <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
-          <span style="font-size:13px;color:#666;text-transform:capitalize;">${m}</span>
+          <span style="font-size:13px;color:#666;text-transform:capitalize;">${m.key}</span>
           <span style="font-size:13px;color:#111;font-weight:500;">${Math.round(aL)}g <span style="color:#bbb;font-weight:400;font-size:12px;">/ ${Math.round(aT)}g target</span></span>
         </div>
         <div class="progress-bar-wrap"><div class="progress-bar${over?' over':''}" style="width:${Math.min(pct,100)}%"></div></div>
@@ -430,29 +495,29 @@ function renderWeek(){
     }).join('');
 }
 
-function renderCoach(){
-  const plan=getPlan();
+function renderCoach() {
+  const plan=planToLocal(getPlan());
   document.getElementById('planTraining').textContent=`${plan.training.protein}P ${plan.training.carbs}C ${plan.training.fat}F`;
   document.getElementById('planRefeed').textContent=`${plan.refeed.protein}P ${plan.refeed.carbs}C ${plan.refeed.fat}F`;
   document.getElementById('planRest').textContent=`${plan.rest.protein}P ${plan.rest.carbs}C ${plan.rest.fat}F`;
-  const logs=getLogs();
-  const wts=Object.values(logs).filter(l=>l.weight).map(l=>l.weight);
+  const wts=Object.values(cachedLogs).filter(l=>l.weight).map(l=>parseFloat(l.weight));
   const latest=wts.length?wts[wts.length-1]:plan.startWeight;
-  const lost=plan.startWeight-latest;const toGo=latest-plan.goalWeight;
+  const lost=plan.startWeight-latest; const toGo=latest-plan.goalWeight;
   const pct=Math.max(0,Math.min(100,Math.round(lost/(plan.startWeight-plan.goalWeight)*100)));
   document.getElementById('goalProgress').style.width=pct+'%';
   document.getElementById('progressLabel').textContent=`${lost.toFixed(1)} lbs lost · ${toGo.toFixed(1)} lbs to go`;
 }
 
-async function runAIReview(){
-  const logs=getLogs();const keys=getWeekKeys();
-  const weekLogs=keys.reduce((acc,k)=>{if(logs[k])acc[k]=logs[k];return acc;},{});
-  const plan=getPlan();const btn=document.getElementById('aiBtn');
+async function runAIReview() {
+  const keys=getWeekKeys();
+  const weekLogs=keys.map(k=>cachedLogs[k]).filter(Boolean);
+  const plan=planToLocal(getPlan());
+  const btn=document.getElementById('aiBtn');
   const responseEl=document.getElementById('aiResponse');
-  btn.textContent='Analyzing your week...';btn.disabled=true;
+  btn.textContent='Analyzing your week...'; btn.disabled=true;
   responseEl.innerHTML='<p style="color:#bbb;">Analyzing your week...</p>';
-  const weekSummary=Object.entries(weekLogs).map(([date,log])=>
-    `${date} (${log.dayType}): weight=${log.weight||'?'}lbs, protein=${log.protein||'?'}g (target ${log.targets?.protein||'?'}g), carbs=${log.carbs||'?'}g (target ${log.targets?.carbs||'?'}g), fat=${log.fat||'?'}g (target ${log.targets?.fat||'?'}g), cardio=${log.cardio?'yes':'no'}`
+  const weekSummary=weekLogs.map(log=>
+    `${log.date} (${log.day_type}): weight=${log.weight||'?'}lbs, protein=${log.protein||'?'}g (target ${log.target_protein||'?'}g), carbs=${log.carbs||'?'}g (target ${log.target_carbs||'?'}g), fat=${log.fat||'?'}g (target ${log.target_fat||'?'}g), cardio=${log.cardio?'yes':'no'}`
   ).join('\n');
   const prompt=`You are an experienced macro-based fitness coach. Review this client's week and suggest next week's macro adjustments.
 CURRENT PLAN:
@@ -484,37 +549,30 @@ REST_P: [number]
 REST_C: [number]
 REST_F: [number]
 CARDIO_PER_WEEK: [number]`;
-  try{
+  try {
     const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,messages:[{role:'user',content:prompt}]})});
     const data=await res.json();
     const text=data.content?.map(c=>c.text||'').join('')||'';
     const assessment=text.match(/ASSESSMENT:\s*(.+?)(?=RECOMMENDATION:|$)/s)?.[1]?.trim()||'';
     const recommendation=text.match(/RECOMMENDATION:\s*(.+?)(?=TRAINING_P:|$)/s)?.[1]?.trim()||'';
     const extract=key=>{const m=text.match(new RegExp(key+':\\s*(\\d+)'));return m?parseInt(m[1]):null;};
-    const newPlan={
-      training:{protein:extract('TRAINING_P'),carbs:extract('TRAINING_C'),fat:extract('TRAINING_F')},
-      refeed:{protein:extract('REFEED_P'),carbs:extract('REFEED_C'),fat:extract('REFEED_F')},
-      rest:{protein:extract('REST_P'),carbs:extract('REST_C'),fat:extract('REST_F')},
-      cardioPerWeek:extract('CARDIO_PER_WEEK')
-    };
     responseEl.innerHTML=`<div style="margin-bottom:12px;"><div class="ai-label">Assessment</div><p style="font-size:14px;color:#444;line-height:1.65;">${assessment}</p></div><div><div class="ai-label">Recommendation</div><p style="font-size:14px;color:#444;line-height:1.65;">${recommendation}</p></div>`;
-    const cm=document.getElementById('confirmMacros');cm.classList.add('visible');
-    document.getElementById('newTP').value=newPlan.training.protein;
-    document.getElementById('newTC').value=newPlan.training.carbs;
-    document.getElementById('newTF').value=newPlan.training.fat;
-    document.getElementById('newRP').value=newPlan.refeed.protein;
-    document.getElementById('newRC').value=newPlan.refeed.carbs;
-    document.getElementById('newRF').value=newPlan.refeed.fat;
-    document.getElementById('newResP').value=newPlan.rest.protein;
-    document.getElementById('newResC').value=newPlan.rest.carbs;
-    document.getElementById('newResF').value=newPlan.rest.fat;
-    document.getElementById('newCardio').value=newPlan.cardioPerWeek;
-  }catch(e){responseEl.innerHTML='<p style="color:#E24B4A;">Something went wrong. Try again.</p>';}
-  btn.textContent='Analyze my week + suggest adjustments →';btn.disabled=false;
+    const cm=document.getElementById('confirmMacros'); cm.classList.add('visible');
+    document.getElementById('newTP').value=extract('TRAINING_P');
+    document.getElementById('newTC').value=extract('TRAINING_C');
+    document.getElementById('newTF').value=extract('TRAINING_F');
+    document.getElementById('newRP').value=extract('REFEED_P');
+    document.getElementById('newRC').value=extract('REFEED_C');
+    document.getElementById('newRF').value=extract('REFEED_F');
+    document.getElementById('newResP').value=extract('REST_P');
+    document.getElementById('newResC').value=extract('REST_C');
+    document.getElementById('newResF').value=extract('REST_F');
+    document.getElementById('newCardio').value=extract('CARDIO_PER_WEEK');
+  } catch(e) { responseEl.innerHTML='<p style="color:#E24B4A;">Something went wrong. Try again.</p>'; }
+  btn.textContent='Analyze my week + suggest adjustments →'; btn.disabled=false;
 }
 
-function confirmPlan(){
-  const existing=getPlan();
+async function confirmPlan() {
   const tp=parseInt(document.getElementById('newTP').value);
   const tc=parseInt(document.getElementById('newTC').value);
   const tf=parseInt(document.getElementById('newTF').value);
@@ -524,36 +582,45 @@ function confirmPlan(){
   const resp=parseInt(document.getElementById('newResP').value);
   const resc=parseInt(document.getElementById('newResC').value);
   const resf=parseInt(document.getElementById('newResF').value);
-  setStorage('macroplan',{...existing,
-    training:{protein:tp,carbs:tc,fat:tf,cals:Math.round(tp*4+tc*4+tf*9)},
-    refeed:{protein:rp,carbs:rc,fat:rf,cals:Math.round(rp*4+rc*4+rf*9)},
-    rest:{protein:resp,carbs:resc,fat:resf,cals:Math.round(resp*4+resc*4+resf*9)},
-    cardioPerWeek:parseInt(document.getElementById('newCardio').value)
-  });
+  const newPlan = {
+    training_protein:tp, training_carbs:tc, training_fat:tf, training_cals:Math.round(tp*4+tc*4+tf*9),
+    refeed_protein:rp,   refeed_carbs:rc,   refeed_fat:rf,   refeed_cals:Math.round(rp*4+rc*4+rf*9),
+    rest_protein:resp,   rest_carbs:resc,   rest_fat:resf,   rest_cals:Math.round(resp*4+resc*4+resf*9),
+    cardio_per_week:parseInt(document.getElementById('newCardio').value),
+    start_weight: getPlan().start_weight,
+    goal_weight: getPlan().goal_weight,
+    start_date: getPlan().start_date
+  };
+  await savePlanToDB(newPlan);
   document.getElementById('confirmMacros').classList.remove('visible');
-  showToast('New plan saved!');renderCoach();
+  showToast('New plan saved!'); renderCoach();
 }
 
-function showToast(msg){
-  const t=document.getElementById('toast');t.textContent=msg;t.style.display='block';
+function showToast(msg) {
+  const t=document.getElementById('toast'); t.textContent=msg; t.style.display='block';
   setTimeout(()=>t.style.display='none',2200);
 }
 
-function init(){
+async function init() {
   document.getElementById('today-date').textContent=new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});
+  setSyncStatus('Loading...', '');
+  await loadPlan();
+  await loadLogs();
+  setSyncStatus('', '');
   selectedDayType=defaultDayType(todayKey());
-  const logs=getLogs();const todayLog=logs[todayKey()];
+  const todayLog=cachedLogs[todayKey()];
   if(todayLog){
-    selectedDayType=todayLog.dayType;
+    selectedDayType=todayLog.day_type||selectedDayType;
     if(todayLog.weight)document.getElementById('inputWeight').value=todayLog.weight;
     if(todayLog.protein)document.getElementById('inputProtein').value=todayLog.protein;
     if(todayLog.carbs)document.getElementById('inputCarbs').value=todayLog.carbs;
     if(todayLog.fat)document.getElementById('inputFat').value=todayLog.fat;
-    if(todayLog.cardio)setCardio(true);else setCardio(false);
+    if(todayLog.cardio)setCardio(true); else setCardio(false);
     calcCals();
   } else { setCardio(false); }
-  renderDayType();renderTargetMetrics();updateHints();initCardioToggle();
+  renderDayType(); renderTargetMetrics(); updateHints(); initCardioToggle();
 }
+
 init();
 </script>
 </body>
