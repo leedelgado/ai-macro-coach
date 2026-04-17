@@ -30,7 +30,8 @@
   .form-group input, .form-group select { padding: 9px 11px; border: 1px solid #e0e0e0; border-radius: 8px; background: #fff; color: #111; font-size: 15px; width: 100%; font-family: inherit; -webkit-appearance: none; appearance: none; }
   .form-group input:focus, .form-group select:focus { outline: none; border-color: #aaa; }
   .macro-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-bottom: 10px; }
-  .target-hint { font-size: 11px; color: #bbb; margin-top: 2px; }
+  .target-hint { font-size: 11px; color: #bbb; }
+  .macro-warn { font-size: 11px; color: #E24B4A; min-height: 14px; display: block; margin-top: 2px; }
   .save-btn { width: 100%; padding: 12px; background: #111; color: #fff; border: none; border-radius: 10px; font-size: 15px; font-weight: 500; cursor: pointer; margin-top: 6px; font-family: inherit; }
   .save-btn:hover { background: #333; }
   .save-btn:disabled { background: #ccc; cursor: not-allowed; }
@@ -155,19 +156,19 @@
       </div>
       <div class="macro-row">
         <div class="form-group">
-          <label>Protein (g)</label>
+          <label>Protein <span class="target-hint" id="hintProtein"></span></label>
           <input type="number" id="inputProtein" oninput="calcCals()" />
-          <span class="target-hint" id="hintProtein"></span>
+          <span class="macro-warn" id="warnProtein"></span>
         </div>
         <div class="form-group">
-          <label>Carbs (g)</label>
+          <label>Carbs <span class="target-hint" id="hintCarbs"></span></label>
           <input type="number" id="inputCarbs" oninput="calcCals()" />
-          <span class="target-hint" id="hintCarbs"></span>
+          <span class="macro-warn" id="warnCarbs"></span>
         </div>
         <div class="form-group">
-          <label>Fat (g)</label>
+          <label>Fat <span class="target-hint" id="hintFat"></span></label>
           <input type="number" id="inputFat" oninput="calcCals()" />
-          <span class="target-hint" id="hintFat"></span>
+          <span class="macro-warn" id="warnFat"></span>
         </div>
       </div>
       <div id="calsDisplay" style="font-size:13px;color:#bbb;margin-bottom:14px;margin-top:2px;"></div>
@@ -514,21 +515,21 @@ function updateHints(){
 function colorMacroInput(inputId,hintId,val,target){
   const input=document.getElementById(inputId);
   const hint=document.getElementById(hintId);
+  const warnId='warn'+hintId.replace('hint','');
+  const warn=document.getElementById(warnId);
+  hint.textContent='/ '+target+'g';
   if(val===null||val===0){
     input.style.borderColor='';
-    hint.style.color='#bbb';
-    hint.textContent='target: '+target+'g';
+    warn.textContent='';
     return;
   }
   const over=val-target;
   if(over>5){
     input.style.borderColor='#E24B4A';
-    hint.style.color='#E24B4A';
-    hint.textContent='target: '+target+'g (+'+Math.round(over)+'g over)';
+    warn.textContent='▲ '+Math.round(over)+'g over target';
   }else{
     input.style.borderColor='';
-    hint.style.color='#bbb';
-    hint.textContent='target: '+target+'g';
+    warn.textContent='';
   }
 }
 
