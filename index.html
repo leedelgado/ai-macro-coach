@@ -573,7 +573,7 @@ function renderWeek(){
       const ok=Math.abs(log.protein-log.target_protein)<=log.target_protein*0.05&&Math.abs(log.carbs-log.target_carbs)<=log.target_carbs*0.08&&Math.abs(log.fat-log.target_fat)<=log.target_fat*0.08;
       dotClass=ok?'green':'red';
     }
-    return`<div class="day-cell${isToday?' today':''}" onclick="goToDateLog('${k}')"><div class="day-name">${DAYS[d.getDay()]}</div><div class="day-weight">${weight}</div><div class="day-dot ${dotClass}"></div><div class="day-type-tag">${log?log.day_type.slice(0,3):defaultDayType(k).slice(0,3)}</div>${log&&log.cardio?'<div class="day-cardio">cardio</div>':''}</div>`;
+    return`<div class="day-cell${isToday?' today':''}" onclick="goToDateLog('${k}')"><div class="day-name">${DAYS[d.getDay()]}</div><div class="day-weight">${weight}</div><div class="day-dot ${dotClass}"></div>${log&&log.cardio?'<div class="day-cardio">cardio</div>':''}</div>`;
   }).join('');
   const wl=keys.map(k=>cachedLogs[k]).filter(Boolean);
   const wts=wl.filter(l=>l.weight).map(l=>parseFloat(l.weight));
