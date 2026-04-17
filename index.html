@@ -143,7 +143,7 @@
       <div class="form-row" style="margin-bottom:16px;">
         <div class="form-group">
           <label>Weight (lbs)</label>
-          <input type="number" id="inputWeight" placeholder="148.0" step="0.1" />
+          <input type="number" id="inputWeight" step="0.1" />
         </div>
         <div class="form-group">
           <label>Cardio done?</label>
@@ -503,9 +503,33 @@ function renderTargetMetrics(){
 
 function updateHints(){
   const t=getTargets(selectedDayType);
-  document.getElementById('hintProtein').textContent='target: '+t.protein+'g';
-  document.getElementById('hintCarbs').textContent='target: '+t.carbs+'g';
-  document.getElementById('hintFat').textContent='target: '+t.fat+'g';
+  const p=parseFloat(document.getElementById('inputProtein').value);
+  const c=parseFloat(document.getElementById('inputCarbs').value);
+  const f=parseFloat(document.getElementById('inputFat').value);
+  colorMacroInput('inputProtein','hintProtein',isNaN(p)?null:p,t.protein);
+  colorMacroInput('inputCarbs','hintCarbs',isNaN(c)?null:c,t.carbs);
+  colorMacroInput('inputFat','hintFat',isNaN(f)?null:f,t.fat);
+}
+
+function colorMacroInput(inputId,hintId,val,target){
+  const input=document.getElementById(inputId);
+  const hint=document.getElementById(hintId);
+  if(val===null||val===0){
+    input.style.borderColor='';
+    hint.style.color='#bbb';
+    hint.textContent='target: '+target+'g';
+    return;
+  }
+  const over=val-target;
+  if(over>5){
+    input.style.borderColor='#E24B4A';
+    hint.style.color='#E24B4A';
+    hint.textContent='target: '+target+'g (+'+Math.round(over)+'g over)';
+  }else{
+    input.style.borderColor='';
+    hint.style.color='#bbb';
+    hint.textContent='target: '+target+'g';
+  }
 }
 
 function calcCals(){
@@ -514,6 +538,7 @@ function calcCals(){
   const f=parseFloat(document.getElementById('inputFat').value)||0;
   const el=document.getElementById('calsDisplay');
   if(p||c||f){el.textContent='Total: '+Math.round(p*4+c*4+f*9)+' kcal';}else{el.textContent='';}
+  updateHints();
 }
 
 function setCardio(val){
