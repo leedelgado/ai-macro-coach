@@ -354,19 +354,21 @@ async function loadLogs(){
   }catch(e){console.error(e);}
 }
 
-// Save always uses upsert via POST + merge-duplicates so editing an existing date updates in place
+// Query Supabase fresh each save to avoid stale-cache misses, then PATCH or POST
 async function saveLog(entry){
   try{
-    await sbFetch('logs',{
-      method:'POST',
-      prefer:'resolution=merge-duplicates,return=representation',
-      body:JSON.stringify(entry)
-    });
+    const existing=await sbFetch('logs?date=eq.'+entry.date+'&select=id');
+    if(existing&&existing.length>0){
+      await sbFetch('logs?id=eq.'+existing[0].id,{method:'PATCH',body:JSON.stringify(entry)});
+    }else{
+      await sbFetch('logs',{method:'POST',body:JSON.stringify(entry)});
+    }
     await loadLogs();
     setSyncStatus('Saved ✓','synced');
   }catch(e){
     setSyncStatus('Save failed','error');
     console.error(e);
+    throw e;
   }
 }
 
@@ -537,21 +539,26 @@ async function saveEntry(){
   const c=isNaN(carbs)?0:carbs;
   const f=isNaN(fat)?0:fat;
   const t=getTargets(selectedDayType);
-  await saveLog({
-    date:selectedKey,
-    weight:isNaN(weight)?null:weight,
-    protein:isNaN(protein)?null:protein,
-    carbs:isNaN(carbs)?null:carbs,
-    fat:isNaN(fat)?null:fat,
-    cals:(p||c||f)?Math.round(p*4+c*4+f*9):null,
-    day_type:selectedDayType,
-    cardio:cardioToday,
-    target_protein:t.protein,
-    target_carbs:t.carbs,
-    target_fat:t.fat,
-    target_cals:Math.round(t.protein*4+t.carbs*4+t.fat*9)
-  });
-  btn.textContent='Save entry';btn.disabled=false;showToast('Saved!');
+  try{
+    await saveLog({
+      date:selectedKey,
+      weight:isNaN(weight)?null:weight,
+      protein:isNaN(protein)?null:protein,
+      carbs:isNaN(carbs)?null:carbs,
+      fat:isNaN(fat)?null:fat,
+      cals:(p||c||f)?Math.round(p*4+c*4+f*9):null,
+      day_type:selectedDayType,
+      cardio:cardioToday,
+      target_protein:t.protein,
+      target_carbs:t.carbs,
+      target_fat:t.fat,
+      target_cals:Math.round(t.protein*4+t.carbs*4+t.fat*9)
+    });
+    showToast('Saved!');
+  }catch(e){
+    showToast('Save failed — try again');
+  }
+  btn.textContent='Save entry';btn.disabled=false;
 }
 
 function renderWeek(){
