@@ -69,12 +69,15 @@
   .sync-status { font-size: 11px; color: #bbb; text-align: right; margin-bottom: 8px; min-height: 16px; }
   .sync-status.synced { color: #1a7a4a; }
   .sync-status.error { color: #E24B4A; }
-  .date-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; padding: 0 2px; }
+  .date-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+  .date-arrow { background: none; border: none; font-size: 22px; color: #aaa; cursor: pointer; padding: 6px 14px; font-family: inherit; line-height: 1; border-radius: 8px; }
+  .date-arrow:hover:not(:disabled) { background: #ebebeb; color: #111; }
+  .date-arrow:disabled { color: #ddd; cursor: default; }
+  .date-center { display: flex; align-items: center; gap: 5px; position: relative; }
   .date-label { font-size: 17px; font-weight: 600; color: #111; }
-  .date-sub { font-size: 13px; color: #999; font-weight: 400; margin-left: 4px; }
-  .date-btn-wrap { position: relative; display: inline-block; }
-  .edit-date-btn { font-size: 13px; color: #378ADD; background: none; border: none; cursor: pointer; font-family: inherit; padding: 6px 8px; display: block; }
-  .date-input-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; font-size: 16px; border: none; background: transparent; z-index: 2; }
+  .date-caret { background: none; border: none; cursor: pointer; padding: 4px 2px; color: #aaa; font-size: 13px; line-height: 1; }
+  .date-caret:hover { color: #555; }
+  .date-picker-hidden { position: absolute; opacity: 0; width: 0; height: 0; pointer-events: none; }
   .profile-note { font-size: 12px; color: #999; margin-bottom: 14px; line-height: 1.5; }
   /* History tab */
   .hist-week { margin-bottom: 1.75rem; }
@@ -117,15 +120,14 @@
 
   <!-- LOG TAB -->
   <div id="log" class="section active">
-    <div class="date-row">
-      <div>
-        <span class="date-label" id="dateLabel">Today</span>
-        <span class="date-sub" id="dateSub"></span>
+    <div class="date-nav">
+      <button class="date-arrow" onclick="shiftDate(-1)">&#8249;</button>
+      <div class="date-center">
+        <span id="dateLabel" class="date-label">Today</span>
+        <button class="date-caret" onclick="openDatePicker()">&#9660;</button>
+        <input type="date" id="dateInput" class="date-picker-hidden" onchange="onDateChange()" />
       </div>
-      <div class="date-btn-wrap">
-        <span class="edit-date-btn">Edit date</span>
-        <input type="date" id="dateInput" class="date-input-overlay" onchange="onDateChange()" />
-      </div>
+      <button class="date-arrow" id="dateNextBtn" onclick="shiftDate(1)">&#8250;</button>
     </div>
     <div class="card">
       <div class="card-title">What type of day is this?</div>
@@ -433,11 +435,17 @@ let selectedKey=todayKey(),selectedDayType=defaultDayType(todayKey()),cardioToda
 
 function updateDateLabel(){
   const d=keyToDate(selectedKey);
-  const isToday=selectedKey===todayKey();
+  const today=todayKey();
   const yest=new Date();yest.setDate(yest.getDate()-1);
+  const isToday=selectedKey===today;
   const isYest=selectedKey===dateToKey(yest);
-  document.getElementById('dateLabel').textContent=isToday?'Today':isYest?'Yesterday':DAYS[d.getDay()]+',';
-  document.getElementById('dateSub').textContent=isToday?', '+MONTHS[d.getMonth()]+' '+d.getDate():isYest?', '+MONTHS[d.getMonth()]+' '+d.getDate():MONTHS[d.getMonth()]+' '+d.getDate()+', '+d.getFullYear();
+  let label;
+  if(isToday)label='Today';
+  else if(isYest)label='Yesterday';
+  else label=FULL_DAYS[d.getDay()].slice(0,3)+', '+MONTHS[d.getMonth()]+' '+d.getDate();
+  document.getElementById('dateLabel').textContent=label;
+  const nextBtn=document.getElementById('dateNextBtn');
+  if(nextBtn)nextBtn.disabled=selectedKey>=today;
 }
 
 function onDateChange(){
@@ -450,8 +458,26 @@ function onDateChange(){
 
 function initDatePicker(){
   const input=document.getElementById('dateInput');
-  input.max=todayKey();input.value=selectedKey;
-  input.addEventListener('click',function(e){if(input.showPicker){e.preventDefault();input.showPicker();}});
+  input.max=todayKey();
+  input.value=selectedKey;
+}
+
+function openDatePicker(){
+  const input=document.getElementById('dateInput');
+  input.max=todayKey();
+  input.value=selectedKey;
+  if(input.showPicker)input.showPicker();
+}
+
+function shiftDate(delta){
+  const d=keyToDate(selectedKey);
+  d.setDate(d.getDate()+delta);
+  const newKey=dateToKey(d);
+  if(newKey>todayKey())return;
+  selectedKey=newKey;
+  updateDateLabel();
+  loadEntryForDate(newKey);
+  document.getElementById('dateInput').value=newKey;
 }
 
 function loadEntryForDate(key){
