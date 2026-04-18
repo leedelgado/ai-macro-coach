@@ -398,7 +398,7 @@ function setSyncStatus(msg,type){
   if(type==='synced')setTimeout(()=>{el.textContent='';el.className='sync-status';},3000);
 }
 
-function todayKey(){return new Date().toISOString().split('T')[0];}
+function todayKey(){return dateToKey(new Date());}
 function dateToKey(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
 function keyToDate(k){return new Date(k+'T12:00:00');}
 function fmtShortDate(d){return MONTHS[d.getMonth()]+' '+d.getDate();}
