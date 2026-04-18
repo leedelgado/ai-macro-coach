@@ -39,8 +39,8 @@
   .ai-btn:hover { background: #ebebeb; }
   .confirm-btn { width: 100%; padding: 12px; background: #1a7a4a; color: #fff; border: none; border-radius: 10px; font-size: 15px; font-weight: 500; cursor: pointer; font-family: inherit; }
   .week-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; }
-  .day-cell { background: #f5f5f5; border-radius: 8px; padding: 8px 4px; text-align: center; min-height: 72px; cursor: pointer; }
-  .day-cell:hover { background: #ececec; }
+  .day-cell { background: #fff; border: 1px solid #e8e8e8; border-radius: 8px; padding: 8px 4px; text-align: center; min-height: 72px; cursor: pointer; }
+  .day-cell:hover { background: #fafafa; }
   .day-cell.today { border: 1.5px solid #378ADD; }
   .day-name { font-size: 11px; color: #999; margin-bottom: 4px; }
   .day-weight { font-size: 13px; font-weight: 600; color: #111; }
@@ -187,7 +187,7 @@
       </div>
     </div>
     <div class="card">
-      <div class="card-title">Daily weigh-ins — tap to edit</div>
+      <div class="card-title">Daily weigh-ins</div>
       <div class="week-grid" id="weekGrid"></div>
       <div style="display:flex;gap:12px;margin-top:10px;">
         <div style="display:flex;align-items:center;gap:5px;"><div class="day-dot green"></div><span style="font-size:11px;color:#999;">On target</span></div>
@@ -599,7 +599,7 @@ function renderWeek(){
       const ok=Math.abs(log.protein-log.target_protein)<=log.target_protein*0.05&&Math.abs(log.carbs-log.target_carbs)<=log.target_carbs*0.08&&Math.abs(log.fat-log.target_fat)<=log.target_fat*0.08;
       dotClass=ok?'green':'red';
     }
-    return`<div class="day-cell${isToday?' today':''}" onclick="goToDateLog('${k}')"><div class="day-name">${DAYS[d.getDay()]}</div><div class="day-weight">${weight}</div><div class="day-dot ${dotClass}"></div>${log&&log.cardio?'<div class="day-cardio">cardio</div>':''}</div>`;
+    return`<div class="day-cell${isToday?' today':''}" onclick="goToDateLog('${k}')"><div class="day-name">${DAYS[d.getDay()]}</div><div class="day-weight">${weight}</div><div class="day-dot ${dotClass}"></div></div>`;
   }).join('');
   const wl=keys.map(k=>cachedLogs[k]).filter(Boolean);
   const wts=wl.filter(l=>l.weight).map(l=>parseFloat(l.weight));
